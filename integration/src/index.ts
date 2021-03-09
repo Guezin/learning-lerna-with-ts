@@ -1,9 +1,12 @@
 import User from '@empresa-sdk/user';
 import Contract from '@empresa-sdk/contract';
 
-const user = new User()
-user.getUser('ESSE É O USER-ID');
+const UserDAO = new User();
+const ContractDAO = new Contract();
 
-const contract = new Contract();
-contract.getContract('ESSE É O CONTRACT-ID');
+const user = UserDAO.create({ name: 'Leandro Guezin Jr', age: 25 });
+console.log('USER => ', UserDAO.getById(user.id));
 
+
+const contract = ContractDAO.create({ userId: user.id, loanValue: '25000'})
+console.log('CONTRACT => ', ContractDAO.getById(contract.id));
